@@ -1,0 +1,46 @@
+# ─── Node / Package Managers ──────────────────────────────────────────
+node_modules/
+.pnpm/
+.vercel/
+.turbo/
+# Lockfiles (keep ONE if your team standardizes on it)
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── Next.js / React Build Output ────────────────────────────────────
+.next/
+out/
+dist/
+coverage/
+*.log
+
+# ─── Environment & Secrets ───────────────────────────────────────────
+.env
+.env.*         # .env.local, .env.development, etc.
+.envrc
+*.local
+
+# ─── Testing / Reports ───────────────────────────────────────────────
+jest*.json
+.nyc_output/
+coverage/
+cypress/videos/
+cypress/screenshots/
+
+# ─── IDE / Editor Artifacts ──────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.orig
+
+# ─── OS‑specific Junk ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
