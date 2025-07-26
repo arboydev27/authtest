@@ -16,6 +16,13 @@ router.post('/login', '#controllers/session.store')
 router.post('/logout', '#controllers/session.destroy')
 
 // any route after this will require a valid session cookie
+// router
+//   .get('/dashboard', async () => ({ secret: '🎉' }))
+//   .use(middleware.auth())   // defaults to the 'web' guard
+
 router
-  .get('/dashboard', async () => ({ secret: '🎉' }))
-  .use(middleware.auth())   // defaults to the 'web' guard
+  .get('/dashboard', async ({ auth }) => {
+    await auth.check()            // returns 401 if not logged‑in
+    return auth.user
+  })
+  .use(middleware.auth())         // protect it

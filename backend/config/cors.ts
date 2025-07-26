@@ -8,8 +8,8 @@ import { defineConfig } from '@adonisjs/cors'
  */
 const corsConfig = defineConfig({
   enabled: true,
-  origin: ['http://localhost:3000'], // Adjust this to your frontend URL
-  // origin: true, // Allows origin requests from any domain
+  // origin: ['http://localhost:3000'], // Adjust this to your frontend URL
+  origin: true, // Allows origin requests from any domain
   methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE'],
   headers: true,
   exposeHeaders: [],
