@@ -3,25 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-const RegistrationForm = () => {
+const LoginForm = () => {
   const router = useRouter();
   const [seed, setSeed] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<String | null>(null);
-
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     await post("/register", { fullName, email, password });
-  //     router.push("/home");
-  //   } catch (error) {
-  //     setError("Invalid credentials");
-  //     console.error(error);
-  //   }
-  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,14 +19,14 @@ const RegistrationForm = () => {
       const API_URL =
         process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3333";
 
-      const res = await fetch(`${API_URL}/register`, {
+      const res = await fetch(`${API_URL}/login`, {
         method: "POST",
         credentials: "include", // ⬅️ send/receive session cookie
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ username, password }),
       });
 
       if (!res.ok) {
@@ -80,7 +68,7 @@ const RegistrationForm = () => {
                 className="mx-auto h-10 w-auto"
               />
               <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-                Sign Up for an account
+                Log in to your Noesis account
               </h2>
             </div>
 
@@ -91,25 +79,6 @@ const RegistrationForm = () => {
                 method="POST"
                 className="space-y-6"
               >
-                <div>
-                  <label
-                    htmlFor="fullName"
-                    className="block text-sm/6 font-medium text-gray-900"
-                  >
-                    Username
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      id="fullName"
-                      name="fullName"
-                      type="text"
-                      required
-                      autoComplete="name"
-                      onChange={(e) => setUsername(e.target.value)}
-                      className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                    />
-                  </div>
-                </div>
                 <div>
                   <label
                     htmlFor="email"
@@ -165,18 +134,18 @@ const RegistrationForm = () => {
                     type="submit"
                     className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
-                    Sign up
+                    Log in
                   </button>
                 </div>
               </form>
 
               <p className="mt-10 text-center text-sm/6 text-gray-500">
-                Already have an account?{" "}
+                Don&rsquo;t have an account?{" "}
                 <Link
-                  href="/login"
+                  href="/register"
                   className="font-semibold text-indigo-600 hover:text-indigo-500"
                 >
-                  Log in
+                  Sign up
                 </Link>
               </p>
             </div>
@@ -187,4 +156,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default LoginForm;
