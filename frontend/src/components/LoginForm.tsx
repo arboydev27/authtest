@@ -9,6 +9,7 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState<String | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,7 +27,7 @@ const LoginForm = () => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password, remember_me: rememberMe }),
       });
 
       if (!res.ok) {
@@ -127,6 +128,18 @@ const LoginForm = () => {
                       className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                     />
                   </div>
+                </div>
+                <div>
+                  <label className="flex items-center text-gray-900 gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      name="remember_me"
+                      checked={rememberMe}
+                      onChange={(e) => setRememberMe(e.target.checked)}
+                      className="h-4 w-4 accent-indigo-600 border-gray-300 rounded-full"
+                    />
+                    Remember me
+                  </label>
                 </div>
 
                 <div>

@@ -93,15 +93,15 @@ const RegistrationForm = () => {
               >
                 <div>
                   <label
-                    htmlFor="fullName"
+                    htmlFor="username"
                     className="block text-sm/6 font-medium text-gray-900"
                   >
                     Username
                   </label>
                   <div className="mt-2">
                     <input
-                      id="fullName"
-                      name="fullName"
+                      id="username"
+                      name="username"
                       type="text"
                       required
                       autoComplete="name"
